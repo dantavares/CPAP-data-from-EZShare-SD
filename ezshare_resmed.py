@@ -409,6 +409,8 @@ class EZShare():
                 self.print('Waiting a few seconds for connection to establish...')
                 time.sleep(self.connection_delay)
 
+        """ This function below is unable to detect the wifi connection for some reason, for now it is better without it
+        
         if not self.wifi_connected():
             if sys.__stdin__.isatty():
                 response = input('Unable to connect automatically, please connect manually and press "C" to continue or any other key to cancel: ')
@@ -416,6 +418,7 @@ class EZShare():
                     sys.exit('Cancled')
             else:
                 logger.warning('No Wi-Fi connection was estableshed. Attempting to continue...')
+        """
 
         try:
             self.path.mkdir(parents=True, exist_ok=True)
@@ -663,7 +666,7 @@ def main():
     """
     Entry point when used as a CLI tool
     """
-    CONNECTION_DELAY = 7
+    CONNECTION_DELAY = 5
 
     CONFIG_FILES = [
         pathlib.Path(f'{APP_NAME}.ini'),  # In the same directory as the script
